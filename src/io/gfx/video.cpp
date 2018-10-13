@@ -188,11 +188,13 @@ bool Video::reset (int width, int height) {
 	screenW = width;
 	screenH = height;
 
-#ifdef SCALE
+#if defined(SCALE) || defined(RS97)
 	if (canvas != screen) SDL_FreeSurface(canvas);
 #endif
 
-#ifdef NO_RESIZE
+#ifdef RS97
+	screen = SDL_SetVideoMode(320, 480, 8, FULLSCREEN_FLAGS);
+#elif defined(NO_RESIZE)
 	screen = SDL_SetVideoMode(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, 8, FULLSCREEN_FLAGS);
 #else
 	screen = SDL_SetVideoMode(screenW, screenH, 8, fullscreen? FULLSCREEN_FLAGS: WINDOWED_FLAGS);
@@ -218,10 +220,9 @@ bool Video::reset (int width, int height) {
 	} else
 #endif
     {
-
 		canvasW = screenW;
 		canvasH = screenH;
-		canvas = screen;
+		canvas = createSurface(NULL, canvasW, canvasH);
 
 	}
 
@@ -490,6 +491,20 @@ void Video::flip (int mspf, PaletteEffect* paletteEffects) {
 
 	}
 #endif
+
+#ifdef RS97
+	if (SDL_MUSTLOCK(screen)) SDL_LockSurface(screen);
+	if (SDL_MUSTLOCK(canvas)) SDL_LockSurface(canvas);
+	for (int y = 0; y < 240; y++) {
+		memcpy((unsigned char *)screen->pixels + y * 2 * screen->pitch , 
+			(unsigned char *)canvas->pixels + y * canvas->pitch, canvas->pitch);
+		memcpy((unsigned char *)screen->pixels + y * 2 * screen->pitch + screen->pitch , 
+			(unsigned char *)canvas->pixels + y * canvas->pitch, canvas->pitch);
+		}
+	if (SDL_MUSTLOCK(canvas)) SDL_UnlockSurface(canvas);
+	if (SDL_MUSTLOCK(screen)) SDL_UnlockSurface(screen);
+#endif
+
 
 	// Apply palette effects
 	if (paletteEffects) {

@@ -34,7 +34,7 @@
 // Constants
 
 // Defaults
-#if defined(DINGOO)
+#if defined(DINGOO) || defined(RS97)
 	#define NET_ADDRESS "10.1.0.1"
 #else
 	#define NET_ADDRESS "192.168.0.1"

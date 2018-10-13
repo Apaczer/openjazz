@@ -163,7 +163,6 @@ int Sprite::getYOffset () {
 void Sprite::setPalette (SDL_Color *palette, int start, int amount) {
 
 	SDL_SetPalette(pixels, SDL_LOGPAL, palette + start, start, amount);
-
 	return;
 
 }
@@ -183,7 +182,6 @@ void Sprite::flashPalette (int index) {
 		palette[count].r = palette[count].g = palette[count].b = index;
 
 	SDL_SetPalette(pixels, SDL_LOGPAL, palette, 0, 256);
-
 	return;
 
 }

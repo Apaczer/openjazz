@@ -656,7 +656,7 @@ int SetupMenu::setupMain () {
 
 			case 2:
 
-#if !defined(DINGOO) && !defined(PSP)
+#if !defined(DINGOO) && !defined(RS97) && !defined(PSP)
 				if (setupJoystick() == E_QUIT) return E_QUIT;
 #else
 				if (message("FEATURE NOT AVAILABLE") == E_QUIT) return E_QUIT;

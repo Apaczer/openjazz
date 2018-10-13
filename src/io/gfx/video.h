@@ -58,6 +58,14 @@
 	#define NO_RESIZE
 
 	#define FULLSCREEN_FLAGS (SDL_FULLSCREEN | SDL_SWSURFACE | SDL_HWPALETTE)
+#elif defined(RS97)
+	#define DEFAULT_SCREEN_WIDTH 320
+	#define DEFAULT_SCREEN_HEIGHT 240
+
+	#define FULLSCREEN_ONLY
+	#define NO_RESIZE
+
+	#define FULLSCREEN_FLAGS (SDL_FULLSCREEN | SDL_SWSURFACE | SDL_HWPALETTE)
 #elif defined(DINGOO)
 	#define DEFAULT_SCREEN_WIDTH 320
 	#define DEFAULT_SCREEN_HEIGHT 240
@@ -86,7 +94,8 @@
 	#define DEFAULT_SCREEN_WIDTH SW
 	#define DEFAULT_SCREEN_HEIGHT SH
 
-	#define FULLSCREEN_FLAGS (SDL_FULLSCREEN | SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_HWPALETTE)
+//	#define FULLSCREEN_FLAGS (SDL_FULLSCREEN | SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_HWPALETTE)
+	#define FULLSCREEN_FLAGS (SDL_DOUBLEBUF | SDL_HWSURFACE | SDL_HWPALETTE)
 #endif
 
 // Time interval
@@ -117,6 +126,9 @@ class Video {
 
 		void findMaxResolution ();
 		void expose            ();
+#ifdef GFX8TO16BIT
+		void setVirtualPalette(SDL_Color *palette, int first, int amount);
+#endif
 
 	public:
 		Video ();
