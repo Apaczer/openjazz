@@ -17,9 +17,13 @@ Icon=openjazz
 Categories=games;
 EOF
 
+# duplicate desktop file for opendingux
+cp default.retrofw.desktop default.gcw0.desktop
+
 # create opk
 FLIST="openjazz"
 FLIST="${FLIST} default.retrofw.desktop"
+FLIST="${FLIST} default.gcw0.desktop"
 FLIST="${FLIST} dist/*"
 
 rm -f ${OPK_NAME}
@@ -27,3 +31,4 @@ mksquashfs ${FLIST} ${OPK_NAME} -all-root -no-xattrs -noappend -no-exports
 
 cat default.retrofw.desktop
 rm -f default.retrofw.desktop
+rm -f default.gcw0.desktop
