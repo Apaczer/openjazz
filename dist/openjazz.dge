@@ -1,4 +1,7 @@
 #!/bin/sh
 
+mkdir -p $HOME/.openjazz/data/
+
 ./openjazz \
-./data
+./data \
+$HOME/.openjazz/data

@@ -13,7 +13,7 @@ OpenJazz: $(OBJS)
 
 
 %.o: %.cpp
-	$(CXX) -Wall -DRS97 -DUSE_MODPLUG -I$(INCLUDE) -I$(INCLUDE)/libmodplug -I$(INCLUDE)/SDL -Isrc -O3 -c $< -o $@
+	$(CXX) -Wall -DRS97 -DUSE_MODPLUG -DHOMEDIR -I$(INCLUDE) -I$(INCLUDE)/libmodplug -I$(INCLUDE)/SDL -Isrc -O3 -c $< -o $@
 # 
 #-DGFX8TO16BIT
 #-DUSE_MODPLUG
