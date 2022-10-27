@@ -15,7 +15,7 @@ OpenJazz-static: $(OBJS)
 	$(CXX) -Wall -I$(INCLUDE) -I$(INCLUDE)/libmodplug -I$(INCLUDE)/SDL $(OBJS) -o OpenJazz -Wl,-Bstatic -lSDL -lasound -lmodplug -lz -Wl,-Bdynamic -lpthread -lstdc++ 
 
 %.o: %.cpp
-	$(CXX) -Wall -DRS97 -DUSE_MODPLUG -DHOMEDIR -I$(INCLUDE) -I$(INCLUDE)/libmodplug -I$(INCLUDE)/SDL -Isrc -O3 -c $< -o $@
+	$(CXX) -Wall -DRS97 -DMIYOO -DUSE_MODPLUG -DHOMEDIR -I$(INCLUDE) -I$(INCLUDE)/libmodplug -I$(INCLUDE)/SDL -Isrc -O3 -c $< -o $@
 # 
 #-DGFX8TO16BIT
 #-DUSE_MODPLUG
