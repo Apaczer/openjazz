@@ -1,6 +1,6 @@
 # OpenJazz makefile
 
-CROSS_COMPILE=/opt/bittboy-toolchain/arm-linux-
+CROSS_COMPILE=/opt/bittboy-toolchain/bin/arm-linux-
 CC=$(CROSS_COMPILE)gcc
 CXX=$(CROSS_COMPILE)g++
 SYSROOT=$(shell $(CC) --print-sysroot)
