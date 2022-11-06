@@ -1,5 +1,16 @@
+# libraries
+OJEXTLIBOBJ = \
+	ext/psmplug/fastmix.o \
+	ext/psmplug/load_psm.o \
+	ext/psmplug/psmplug.o \
+	ext/psmplug/snd_dsp.o \
+	ext/psmplug/snd_flt.o \
+	ext/psmplug/snd_fx.o \
+	ext/psmplug/sndfile.o \
+	ext/psmplug/sndmix.o
 
-OBJS = \
+# main engine & levels
+OJOBJS = \
 	src/game/clientgame.o src/game/game.o src/game/gamemode.o \
 	src/game/localgame.o src/game/servergame.o \
 	src/io/gfx/anim.o src/io/gfx/font.o src/io/gfx/paletteeffects.o \
@@ -31,3 +42,5 @@ OBJS = \
 	src/menu/plasma.o src/menu/setupmenu.o \
 	src/player/player.o \
 	src/main.o src/setup.o src/util.o
+
+OBJS = $(OJEXTLIBOBJ) $(OJOBJS)
