@@ -188,11 +188,11 @@ bool Video::reset (int width, int height) {
 	screenW = width;
 	screenH = height;
 
-#if defined(SCALE) || defined(RS97)
+#if defined(SCALE) || defined(RS97) || defined(MIYOO)
 	if (canvas != screen) SDL_FreeSurface(canvas);
 #endif
 
-#ifdef RS97
+#if defined(RS97) || defined(MIYOO)
 	screen = SDL_SetVideoMode(320, 240, 8, FULLSCREEN_FLAGS);
 #elif defined(NO_RESIZE)
 	screen = SDL_SetVideoMode(DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, 8, FULLSCREEN_FLAGS);
@@ -492,7 +492,7 @@ void Video::flip (int mspf, PaletteEffect* paletteEffects) {
 	}
 #endif
 
-#ifdef RS97
+#if defined(RS97) || defined(MIYOO)
 	if (SDL_MUSTLOCK(screen)) SDL_LockSurface(screen);
 	if (SDL_MUSTLOCK(canvas)) SDL_LockSurface(canvas);
 	for (int y = 0; y < 240; y++) {

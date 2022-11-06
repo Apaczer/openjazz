@@ -58,7 +58,7 @@
 	#define NO_RESIZE
 
 	#define FULLSCREEN_FLAGS (SDL_FULLSCREEN | SDL_SWSURFACE | SDL_HWPALETTE)
-#elif defined(RS97) && !defined(MIYOO)
+#elif defined(RS97)
 	#define DEFAULT_SCREEN_WIDTH 320
 	#define DEFAULT_SCREEN_HEIGHT 240
 
