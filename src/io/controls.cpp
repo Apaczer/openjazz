@@ -58,6 +58,17 @@
     #define DEFAULT_KEY_PAUSE           (SDLK_RETURN)
     #define DEFAULT_KEY_YES             (SDLK_LCTRL)
     #define DEFAULT_KEY_NO              (SDLK_LALT)
+#elif defined(MIYOO) 
+    #define DEFAULT_KEY_JUMP            (SDLK_LALT) /* A button */
+    #define DEFAULT_KEY_SWIM            (SDLK_LALT) /* A button */
+    #define DEFAULT_KEY_FIRE            (SDLK_LCTRL) /* B button */
+    #define DEFAULT_KEY_CHANGE          (SDLK_SPACE) /* Y button */
+    #define DEFAULT_KEY_ENTER           (SDLK_LALT) /* START button */
+    #define DEFAULT_KEY_ESCAPE          (SDLK_RCTRL)  /* HOME button */
+    #define DEFAULT_KEY_STATS           (SDLK_TAB)  /* L1 button */
+    #define DEFAULT_KEY_PAUSE           (SDLK_ESCAPE) /* SELECT button */
+    #define DEFAULT_KEY_YES             (SDLK_LALT) /* A button */
+    #define DEFAULT_KEY_NO              (SDLK_LCTRL) /* B button */
 #elif defined(DINGOO) 
     #define DEFAULT_KEY_JUMP            (SDLK_LCTRL)
     #define DEFAULT_KEY_SWIM            (SDLK_LCTRL)
@@ -160,7 +171,7 @@
     #define DEFAULT_BUTTON_PAUSE           (11)
     #define DEFAULT_BUTTON_YES             (-1)
     #define DEFAULT_BUTTON_NO              (-1)
-#elif defined(RS97) 
+#elif defined(RS97)
     #define DEFAULT_BUTTON_UP              (-1)
     #define DEFAULT_BUTTON_DOWN            (-1)
     #define DEFAULT_BUTTON_LEFT            (-1)
