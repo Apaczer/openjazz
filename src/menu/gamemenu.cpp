@@ -573,9 +573,11 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 				fontmn2->mapPalette(240, 8, 9, 80);
 
 		}
-
+#if defined(QUIT_SELECT)
+		fontbig->showString(ESCAPE_STRING, canvasW - 122, canvasH - 12);
+#else
 		fontbig->showString(ESCAPE_STRING, canvasW - 100, canvasH - 12);
-
+#endif
 	}
 
 	return E_NONE;

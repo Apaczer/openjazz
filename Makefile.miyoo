@@ -12,7 +12,7 @@ OpenJazz: $(OBJS)
 	$(CXX) -Wall -I$(INCLUDE) -I$(INCLUDE)/SDL $(OBJS) -o OpenJazz -lSDL -lasound -lz -lpthread -lstdc++ 
 
 %.o: %.cpp
-	$(CXX) -Wall -DMIYOO -DUSE_PSMPLUG -DHOMEDIR -I$(INCLUDE) -I$(INCLUDE)/SDL -Isrc -Iext/psmplug -O3 -c $< -o $@
+	$(CXX) -Wall -DMIYOO -DUSE_PSMPLUG -DHOMEDIR -DQUIT_SELECT -I$(INCLUDE) -I$(INCLUDE)/SDL -Isrc -Iext/psmplug -O3 -c $< -o $@
 # 
 #-DGFX8TO16BIT
 #-DUSE_MODPLUG
