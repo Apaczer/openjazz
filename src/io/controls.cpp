@@ -58,15 +58,15 @@
     #define DEFAULT_KEY_PAUSE           (SDLK_RETURN)
     #define DEFAULT_KEY_YES             (SDLK_LCTRL)
     #define DEFAULT_KEY_NO              (SDLK_LALT)
-#elif defined(MIYOO) 
+#elif defined(MIYOO) /*PocketGO mapping in description*/
     #define DEFAULT_KEY_JUMP            (SDLK_LALT) /* A button */
     #define DEFAULT_KEY_SWIM            (SDLK_LALT) /* A button */
     #define DEFAULT_KEY_FIRE            (SDLK_LCTRL) /* B button */
     #define DEFAULT_KEY_CHANGE          (SDLK_SPACE) /* Y button */
-    #define DEFAULT_KEY_ENTER           (SDLK_LALT) /* START button */
-    #define DEFAULT_KEY_ESCAPE          (SDLK_RCTRL)  /* HOME button */
+    #define DEFAULT_KEY_ENTER           (SDLK_LALT) /* A button */
+    #define DEFAULT_KEY_ESCAPE          (SDLK_ESCAPE)  /* SELECT button */
     #define DEFAULT_KEY_STATS           (SDLK_TAB)  /* L1 button */
-    #define DEFAULT_KEY_PAUSE           (SDLK_ESCAPE) /* SELECT button */
+    #define DEFAULT_KEY_PAUSE           (SDLK_RETURN) /* START button */
     #define DEFAULT_KEY_YES             (SDLK_LALT) /* A button */
     #define DEFAULT_KEY_NO              (SDLK_LCTRL) /* B button */
 #elif defined(DINGOO) 

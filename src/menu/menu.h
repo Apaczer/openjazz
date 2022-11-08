@@ -34,8 +34,11 @@
 
 
 // Constants
-
+#if defined(MIYOO)
+#define ESCAPE_STRING "(select) quits"
+#else
 #define ESCAPE_STRING "(esc) quits"
+#endif
 
 // Demo timeout
 #define T_DEMO 20000
