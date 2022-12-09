@@ -34,7 +34,7 @@
 
 
 // Constants
-#if defined(MIYOO)
+#if defined(QUIT_SELECT)
 #define ESCAPE_STRING "(select) quits"
 #else
 #define ESCAPE_STRING "(esc) quits"
