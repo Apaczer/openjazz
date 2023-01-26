@@ -580,18 +580,29 @@ int GameMenu::newGameEpisode (GameModeType mode) {
 
 				// black on white
 				fontmn2->mapPalette(240, 8, 79, -80);
+#if defined (ALLIGN_EPX)
+				drawRect(8, (canvasH >> 1) + (count << 4) - 94,
+					160, 15, 79);
+#else
 				drawRect(episodeX - 2, (canvasH >> 1) + (count << 4) - 94,
 					160, 15, 79);
+#endif
 
 			} else if (!exists[count])
 				fontmn2->mapPalette(240, 8, 94, -16);
 
 			// align both separately
+#if defined (ALLIGN_EPX)
+			fontmn2->showString(episodeTag[count], 10,
+				(canvasH >> 1) + (count << 4) - 92);
+			fontmn2->showString(episodeTitle[count], 26,
+				(canvasH >> 1) + (count << 4) - 92);
+#else
 			fontmn2->showString(episodeTag[count], episodeX - (count < 6 ? 2 : 0),
 				(canvasH >> 1) + (count << 4) - 92);
 			fontmn2->showString(episodeTitle[count], episodeX + 16,
 				(canvasH >> 1) + (count << 4) - 92);
-
+#endif
 			if ((count == episode) || (!exists[count]))
 				fontmn2->mapPalette(240, 8, 9, 80);
 
