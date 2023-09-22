@@ -31,7 +31,9 @@ configure
 
 # distribution
 openjazz-*.tar.*
-OpenJazz-*.zip
+OpenJazz*.zip
+OpenJazz*.ipk
+/package/
 
 # generated documentation
 /doc/html

@@ -1,0 +1,7 @@
+Package: OpenJazz
+Version: 1.0
+Description: OpenJazz - engine for Jazz Jackrabbit game
+Section: games
+Priority: optional
+Maintainer: Apacz
+Architecture: arm

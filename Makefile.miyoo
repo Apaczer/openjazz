@@ -1,5 +1,16 @@
 # OpenJazz makefile
 
+HOMEPATH = /mnt
+TARGET ?= OpenJazz
+VERSION ?= $(shell date +%Y-%m-%d\ %H:%M)
+RELEASEDIR = package
+ASSETSDIR = dist
+OPKG_ASSETSDIR = opkg_assets
+LINK = openjazz.lnk
+DESTDIR = games
+SECTION = games
+ALIASES = aliases.txt
+
 CROSS_COMPILE=/opt/miyoo/bin/arm-linux-
 CC=$(CROSS_COMPILE)gcc
 CXX=$(CROSS_COMPILE)g++
@@ -18,5 +29,34 @@ OpenJazz: $(OBJS)
 #-DUSE_MODPLUG
 #-DUSE_SOCKETS
 
+package: OpenJazz
+	@mkdir -p $(RELEASEDIR)
+	@cp *$(TARGET) $(RELEASEDIR)/
+	@mkdir -p $(RELEASEDIR)$(HOMEPATH)/$(DESTDIR)/$(TARGET)
+	@mkdir -p $(RELEASEDIR)$(HOMEPATH)/gmenu2x/sections/$(SECTION)
+	@mv $(RELEASEDIR)/*$(TARGET) $(RELEASEDIR)$(HOMEPATH)/$(DESTDIR)/$(TARGET)/
+	@cp -r $(ASSETSDIR)/* $(RELEASEDIR)$(HOMEPATH)/$(DESTDIR)/$(TARGET)
+	@cp $(OPKG_ASSETSDIR)/$(LINK) $(RELEASEDIR)$(HOMEPATH)/gmenu2x/sections/$(SECTION)
+	@sed "s/^exec=.*/exec=\$(HOMEPATH)\/$(DESTDIR)\/$(TARGET)\/$(TARGET)/" $(OPKG_ASSETSDIR)/$(LINK) > $(RELEASEDIR)$(HOMEPATH)/gmenu2x/sections/$(SECTION)/$(LINK)
+	@cp $(OPKG_ASSETSDIR)/$(ALIASES) $(RELEASEDIR)$(HOMEPATH)/$(DESTDIR)/$(TARGET)
+
+zip: package
+	@cd $(RELEASEDIR) && zip -rq $(TARGET)$(VERSION).zip ./* && mv *.zip ..
+	@rm -rf $(RELEASEDIR)
+
+ipk: package
+	@mkdir -p $(RELEASEDIR)/data
+	@mv $(RELEASEDIR)$(HOMEPATH) $(RELEASEDIR)/data/
+	@cp -r $(OPKG_ASSETSDIR)/CONTROL $(RELEASEDIR)
+	@sed "s/^Version:.*/Version: $(VERSION)/" $(OPKG_ASSETSDIR)/CONTROL/control > $(RELEASEDIR)/CONTROL/control
+	@echo 2.0 > $(RELEASEDIR)/debian-binary
+	@tar --owner=0 --group=0 -czvf $(RELEASEDIR)/data.tar.gz -C $(RELEASEDIR)/data/ . >/dev/null 2>&1
+	@tar --owner=0 --group=0 -czvf $(RELEASEDIR)/control.tar.gz -C $(RELEASEDIR)/CONTROL/ . >/dev/null 2>&1
+	@ar r $(TARGET).ipk $(RELEASEDIR)/control.tar.gz $(RELEASEDIR)/data.tar.gz $(RELEASEDIR)/debian-binary
+	@rm -rf $(RELEASEDIR)
+
 clean:
 	rm -f OpenJazz $(OBJS)
+	rm -rf $(RELEASEDIR)
+	rm -f *.ipk
+	rm -f *.zip
