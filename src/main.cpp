@@ -202,6 +202,7 @@ void startUp (int argc, char *argv[]) {
 	// Use the current working directory
 
 	firstPath = new Path(firstPath, createString(""));
+	firstPath = new Path(firstPath, createString("./data/"));
 
 	// Default settings
 
